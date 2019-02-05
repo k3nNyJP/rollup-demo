@@ -20,7 +20,7 @@ export class VersionService {
   subscribeVersion(): Observable<Version> {
     return interval(5000).pipe(
       startWith(0),
-      switchMap(() => this.http.get<any>(`${this.server}/api/version`)),
+      switchMap(() => this.http.get<any>(this.server)),
       map((data) => ({ version: data.version, timestamp: moment(data.timestamp).toLocaleString() })),
       share(),
     );

@@ -1,12 +1,12 @@
 {
   "name": "rollup-demo",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "scripts": {
     "ng": "ng",
-    "start": "node dist/server/main.js",
-    "build": "ng build && tsc -p server/tsconfig.app.json",
+    "start": "ng serve",
+    "build": "ng build",
     "test": "jest",
-    "lint": "ng lint && tslint -p server/tslint.json",
+    "lint": "ng lint",
     "e2e": "ng e2e",
     "test:watch": "jest --watch"
   },
