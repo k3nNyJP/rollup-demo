@@ -12,3 +12,9 @@
 <p>
   {{ (this.version | async)?.timestamp }}
 </p>
+
+<form>
+  <input type="text" [(ngModel)]="this.host" name="host" placeholder="host" value="localhost">
+  <input type="number" [(ngModel)]="this.port" name="port" placeholder="port" value="8080">
+  <button type="submit" (click)="this.configureServer()">set server</button>
+</form>

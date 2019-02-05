@@ -10,10 +10,16 @@ import { Observable } from 'rxjs';
 export class AppComponent {
   public title = 'rollup-demo';
   public version: Observable<Version>;
+  public host: string;
+  public port: number;
 
   constructor(public versionService: VersionService) { }
 
   public ngOnInit() {
+  }
+
+  public configureServer() {
+    this.versionService.setServer(this.host, this.port);
     this.version = this.versionService.subscribeVersion();
   }
 }

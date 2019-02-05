@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from "@angular/common/http";
 import { Observable, interval } from 'rxjs';
-import { switchMap, share, map } from "rxjs/operators";
+import { switchMap, share, map, startWith, filter } from "rxjs/operators";
 import * as moment from "moment";
 
 export interface Version {
@@ -13,14 +13,20 @@ export interface Version {
   providedIn: 'root'
 })
 export class VersionService {
+  private server: string;
 
   constructor(private http: HttpClient) { }
 
   subscribeVersion(): Observable<Version> {
     return interval(5000).pipe(
-      switchMap(() => this.http.get<any>("http://localhost:8080/api/version")),
+      startWith(0),
+      switchMap(() => this.http.get<any>(`${this.server}/api/version`)),
       map((data) => ({ version: data.version, timestamp: moment(data.timestamp).toLocaleString() })),
       share(),
     );
+  }
+
+  setServer(host: string, port: number) {
+    this.server = `http://${host}:${port}`;
   }
 }
