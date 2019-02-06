@@ -1,8 +1,6 @@
 import { Component } from '@angular/core';
 import { VersionService, Version } from './version.service';
 import { Observable, of } from 'rxjs';
-import { lt } from 'semver';
-import { map, tap } from 'rxjs/operators';
 
 @Component({
   selector: 'app-root',
