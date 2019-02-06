@@ -20,7 +20,7 @@ spec:
     spec:
       containers:
       - name: rollup-demo
-        image: rollup-demo:0.0.4
+        image: rollup-demo:1.0.0
         imagePullPolicy: IfNotPresent
         ports:
         - containerPort: 4200
